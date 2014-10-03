@@ -91,7 +91,7 @@ if($_SERVER['SERVER_PORT']!=443) {
 	$port='';
 }
 
-$redirect_uri="https://".$_SERVER['SERVER_NAME'].$port."/callback/";
+$redirect_uri="http://".$_SERVER['SERVER_NAME'].$port."/callback/";
 
 $client='hubic'; // fixed for now
 
@@ -377,7 +377,7 @@ file_put_contents(CACHEPATH.'/'.$cacheKey,serialize(
 if($mode=='callback') {
 	header('HTTP/1.0 301 Redirect');
 	nocache();
-	header('Location: https://'.$_SERVER['HTTP_HOST'].'/success/');
+	header('Location: http://'.$_SERVER['HTTP_HOST'].'/success/');
 } else if($mode=='swift') {
 	header('X-Storage-Url: '.$storage->endpoint);
 	header('X-Auth-Token: '.$storage->token);
